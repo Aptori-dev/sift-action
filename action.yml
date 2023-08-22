@@ -1,0 +1,29 @@
+name: 'Aptori Sift Action'
+description: 'Find business logic and security bugs in your application with Aptori Autonomous API Security Testing'
+inputs:
+  platformKey:
+    description: Aptori Platform key
+    required: true
+    default: ''
+  configurationId:
+    description: Sift configuration ID
+    required: true
+    default: ''
+  targetUrl:
+    description: URL to scan, overrides the one specified in configuration
+    required: false
+    default: ''
+  labels:
+    description: Space-separated list labels to pass to Sift
+    required: false
+    default: ''
+  network:
+    description: Docker network bridge name to use for scan
+    required: false
+    default: ''
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+branding:
+  icon: 'check-circle'
+  color: 'purple'
