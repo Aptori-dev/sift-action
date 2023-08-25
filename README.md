@@ -2,59 +2,55 @@
 
 # Aptori Sift Action
 
-Aptori is an AI-driven application testing platform.  Harnessing the power of
-AI, Aptori autonomously constructs, executes, and maintains tests to ensure
-secure, compliant, and efficient APIs.  Aptori analyzes the behavior of your
-application's API using sophisticated stateful request chains to identify
-hard-to-find defects and vulnerabilities in the business logic of your
-application before an attacker does.
 
-Sift Action is a [GitHub Action](https://docs.github.com/actions) that runs
-Aptori's Sift CLI tool in a continous integration (CI) workflow to test your
-application.
+Aptori is an AI-Enabled [developer tool for API Testing](https://aptori.dev/)
+and Application Security Testing.
 
+Aptori leverages AI to assist in the development of secure, high-quality
+software. Our Semantic Reasoning Technology comprehends the structure of your
+application, allowing for autonomous application testing. This efficiency frees
+developers from time-consuming testing tasks while ensuring the software is
+secure and functions as intended.
 
-## Getting Started
+Sift uses AI to understand the application's API semantically, identifying how
+different operations connect and creating a logical flowchart of these
+workflows. It then tests these workflows by providing appropriate input values,
+checking that the application's business logic is accurate at each stage.
 
-### 1. Create an Aptori Account
-Go to the [Aptori sign up page](https://app.aptori.dev/sign-up).
-
-### 2. Add An API
-To test an API, you must first [add an API](https://app.aptori.dev/api/add) in
-the Aptori Platform.
-
-### 3. Create A Platform Key
-Sift requires a platform key to post test results to the Aptori platform.
-[Create a platform key](https://app.aptori.dev/platform-keys) and save it, as
-it will only be shown once. You will need to provide the key to sift to run a
-test.
-
-### 4. Create a Configuration for your test
-[Create a configuration](https://app.aptori.dev/configurations) in the Aptori
-Platform. After you have created a configuration, copy the configuration ID by
-clicking on the ID in the configurations list.
-
-### 5. Add Sift to your workflow
-Go to your GitHub Repository on which you would like to run the Sift tool. Add
-the `aptori-sift` action to an existing GitHub workflow or create a new
-workflow. A sample workflow file is provided below under [Example
-Workflow](#example-workflow).
-
-You need to add `platformKey` and `configurationId` from previous steps to your
-[repository secrets](https://docs.github.com/actions/security-guides/encrypted-secrets).
-
-### 6. Run results
-When Sift run completes, the scan results will be available on [Runs
-page](https://app.aptori.dev/runs) of the Aptori Platform.
+Integrate Sift in your CI to identify business logic bugs and security
+vulnerabilities in your applications with Aptori Autonomous [Application
+Security Testing](https://aptori.dev/appsec/security-testing). Sift Action is a
+[GitHub Action](https://docs.github.com/actions) that runs Aptori's Sift CLI
+tool in a continous integration (CI) workflow.
 
 
 ## Additional Information
 
+* Watch [How Aptori Works](https://aptori.dev/product/why-aptori) for a look at the
+  technology that makes Sift unique.
 * [Aptori Documentation](https://docs.aptori.dev/) has further details on the
   Sift CLI tool and the Aptori Platform.
 * [GitHub
   Workflows](https://docs.github.com/actions/using-workflows/about-workflows)
   has further details about configuring jobs in GitHub Actions.
+
+
+## Getting Started
+
+### 1. Get your Aptori account
+To run Sift, you need to have an account on Aptori. Get in touch with our
+expert team to set up a [trial
+account](https://aptori.dev/get-aptori-book-a-demo). After activating your
+account, you can employ `sift-action` to evaluate your application’s API, and
+automatically upload the findings to the Aptori Platform.
+
+### 2. Add Sift to your workflow
+Go to the GitHub Repository on which you want to run Sift. Add the
+`sift-action` to an existing GitHub workflow or create a new workflow.
+A sample workflow file is provided below under [Example Workflow](#example-workflow).
+
+You must add a `platformKey` and `configurationId` from the Aptori Platform to your
+[repository secrets](https://docs.github.com/actions/security-guides/encrypted-secrets).
 
 
 ## Action Inputs
