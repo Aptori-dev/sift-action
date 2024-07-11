@@ -49,8 +49,20 @@ Go to the GitHub Repository on which you want to run Sift. Add the
 `sift-action` to an existing GitHub workflow or create a new workflow.
 A sample workflow file is provided below under [Example Workflow](#example-workflow).
 
-You must add a `platformKey` and `configurationId` from the Aptori Platform to your
-[repository secrets](https://docs.github.com/actions/security-guides/encrypted-secrets).
+In your GitHub repository settings, add values in secrets and variables that
+are used for input values of the Action.
+
+* Define a
+  [secret](https://docs.github.com/actions/security-guides/encrypted-secrets)
+  named `SIFT_PLATFORM_KEY` that contains the value of an Aptori Platform Key.
+  This secret is used for the required input `platformKey` in the workflow
+  example below.
+* Define a
+  [variable](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository)
+  named `SIFT_CONFIGURATION_ID` that contains the ID of a configuration created
+  in the Aptori Platform.  This variable is used for the required input
+  `configurationId` in the workflow
+  example below.
 
 
 ## Action Inputs
@@ -104,7 +116,10 @@ jobs:
     name: Aptori Sift
     runs-on: ubuntu-latest
 
+    #
     # Permissions to upload the Code Scanning result
+    # (only necessary if using GitHub Advanced Security and SARIF upload below)
+    #
     permissions:
       actions: read
       contents: read
@@ -112,16 +127,23 @@ jobs:
 
     steps:
     - name: Check out repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
+    #
     # Example of building and running an application with Docker.
+    #
+    # Note, this is an example.  Add workflow step(s) to deploy or run an
+    # instance of your application.
+    #
     - name: Build and run the application
       run: |
         docker build -t myapp:latest .
         docker network create network1
         docker run -d -p 5000:5000 --network network1 --name myapp myapp:latest
 
+    #
     # Run Sift using platform key and configuration ID stored in your repository secrets
+    #
     - name: Run Sift
       uses: Aptori-dev/sift-action@v1
       with:
@@ -135,7 +157,10 @@ jobs:
           GITHUB_RUN_NUMBER=${{github.run_number}}
           commit=${{github.sha}}
 
-    # Upload SARIF file to GitHub Code Scanning
+    #
+    # Optional: Upload SARIF file to GitHub Code Scanning
+    # (requires GitHub Advanced Security)
+    #
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v2
       with:
