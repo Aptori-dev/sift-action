@@ -162,7 +162,7 @@ jobs:
     # (requires GitHub Advanced Security)
     #
     - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       with:
         # Path to SARIF file relative to the root of the repository
         sarif_file: sift.sarif
